@@ -4,52 +4,99 @@ console.log('Executing index.js script...');
 //
 // 1. Деструктуризація. Будемо переписувати функцію так, щоб вона 
 // приймала один об'єкт параметрів замість набору незалежних аргументів.
-// function calcBMI(weight, height) {
+// function calcBMI({ weight, height }) {
 //     const numericWeight = Number(weight.replace(',', '.'));
 //     const numericHeight = Number(height.replace(',', '.'));
 //     return Number((numericWeight / numericHeight ** 2).toFixed(1));
 // }
-// Було наступним чином:
-// console.log(calcBMI('88,3', '1.75'));
-// console.log(calcBMI('68,3', '1.65'));
-// console.log(calcBMI('118,3', '1.95'));
+// // Було наступним чином:
+// console.log(calcBMI({ weight: '88,3', height: '1.75' }));
+// console.log(calcBMI({ weight: '68,3', height: '1.65' }));
+// console.log(calcBMI({ weight: '118,3', height: '1.95' }));
 //
 //
 //
 // 2. Будемо переписувати функцію так, щоб вона приймала один 
 // об'єкт параметрів замість набору незалежних аргументів.
-// function printContactsInfo(names, phones) {
+// function printContactsInfo({ names, phones }) {
 //     const nameList = names.split(',');
 //     const phoneList = phones.split(',');
 //     for (let i = 0; i < nameList.length; i += 1) {
 //       console.log(`${nameList[i]}: ${phoneList[i]}`);
 //     }
 // }
-// Було наступним чином:
+// // Було наступним чином:
 // printContactsInfo(
-//   'Jacob,William,Solomon,Artemis',
-//   '89001234567,89001112233,890055566377,890055566300',
+//     {
+//         names: ['Jacob','William','Solomon','Artemis'],
+//         phones: '89001234567,89001112233,890055566377,890055566300',
+//     }
 // );
 //
 //
 //
 // 3. Глибока деструктуризація. Будемо переписувати функцію так, щоб вона 
 // приймала один об'єкт параметрів замість набору незалежних аргументів.
-// function getBotReport(companyName, repairBots, defenceBots) {
-//     return `${companyName} has ${repairBots + defenceBots} bots in stock`;
+// function getBotReport({companyName1, bots1: {repair, defence: {numberOfItems}}}) {
+//     return `${companyName1} has ${repair + numberOfItems} bots in stock`;
 // }
-// Було наступним чином:
-// console.log(getBotReport('Cyberdyne Systems', 150, 50));
-// Має бути наступним чином:
+// // // Було наступним чином:
+// // // console.log(getBotReport('Cyberdyne Systems', 150, 50));
+// // // Має бути наступним чином:
 // console.log(
-//     getBotReport({
-//       companyName: 'Cyberdyne Systems',
-//       bots: {
-//         repair: 150,
-//         defence: 50,
-//       },
-//     }),
+//     getBotReport(
+//         {
+//             companyName1: 'Cyberdyne Systems',
+//             bots1: {
+//                 repair: 150,
+//                 defence: {
+//                     numberOfItems: 50
+//                 },
+//             },
+//         }
+//     ),
 // );
+// function testUser({name, wife, age, wifeDog}) {
+// }
+// testUser(name, wife, age);
+// const user = {
+//     name: 'John',
+//     age: 40,
+//     wife: {
+//         name: 'Jane',
+//         age: 40,
+//         dog: {
+//             name: 'Jake',
+//             age: 5,
+//             color: 'red',
+//             type: 'something'
+//         }
+//     },
+//     child: {
+//         name: 'Josh',
+//         age: 5
+//     }
+// };
+
+// const { wife: { dog: {
+//     name, age, color, type, a, b, c, d
+// }} } = user;
+// user.wife.dog.name;
+// user.wife.dog.age;
+// user.wife.dog.color;
+// user.wife.dog.type;
+// user.wife.dog.name;
+// user.wife.dog.age;
+// user.wife.dog.color;
+// user.wife.dog.type;
+// user.wife.dog.name;
+// user.wife.dog.age;
+// user.wife.dog.color;
+// user.wife.dog.type;
+// user.wife.dog.name;
+// user.wife.dog.age;
+// user.wife.dog.color;
+// user.wife.dog.type;
 //
 //
 //
@@ -90,14 +137,11 @@ console.log('Executing index.js script...');
 // значенням "default" якщо в `partialContact` немає такої властивості.
 // function createContact(partialContact) {   
 //     return {
-//       code to be added....
 //       list: 'default',
+//       ...partialContact,
 //       id: generateId(),
 //       createdAt: Date.now(),
 //     };
-// }
-// function generateId() {
-//     return '_' + Math.random().toString(36).substr(2, 9);
 // }
 // console.log(
 //     createContact({
@@ -117,9 +161,16 @@ console.log('Executing index.js script...');
 //
 // 6. Операція rest. Будемо писати функцію `transformUsername(user)` так, щоб вона 
 // повертала новий об'єкт із властивістю `fullName`, замість `firstName` та `lastName`.
-// function transformUsername({...}) {...}
+// function transformUsername({firstName, lastName, ...userInfo}) {
+//     return {
+//         fullName: `${firstName} ${lastName}`,
+//         firstName,
+//         lastName,
+//         ...userInfo
+//     }
+// }
 // console.log(
-//     transformId({
+//     transformUsername({
 //       id: 1,
 //       firstName: 'Jacob',
 //       lastName: 'Mercer',
@@ -128,7 +179,7 @@ console.log('Executing index.js script...');
 //     }),
 // ); // {id: 1, fullName: 'Jacob Mercer', firstName: 'Jacob', lastName: 'Mercer', email: 'j.mercer@mail.com', friendCount: 40,}
 // console.log(
-//     transformId({
+//     transformUsername({
 //       id: 2,
 //       firstName: 'Adrian',
 //       lastName: 'Cross',
@@ -136,3 +187,120 @@ console.log('Executing index.js script...');
 //       friendCount: 20,
 //     }),
 // );
+
+// [user1, user2, user3, user4];
+// const users = {
+//     user1: {},
+//     user2: {}
+// }
+// users.user1;
+// for () {
+// if (user.name === 'Jack')
+// }
+// function test({usersArray}) {
+//     for (let i = 0; i < usersArray.lenght; i++) {
+//         if (usersArray[i].name === 'Josh') {
+//             console.log(usersArray[i]);
+//         }
+//     }
+// }
+// const userJohn = {
+//     name: 'John',
+//     lastName: 'Johnson'
+// };
+// const userJack = {
+//     name: 'Jack',
+//     lastName: 'Jackson'
+// };
+// const userMike = {
+//     name: 'Mike',
+//     lastName: 'Mikeson'
+// };
+// const userJosh = {
+//     name: 'Josh',
+//     lastName: 'Josnson'
+// };
+// const usersObj = {
+//     userJohn, userJack
+// }
+// // test(usersObj);
+// const usersArray = [userJohn, userJack, userMike, userJosh];
+
+
+
+
+
+
+
+// function generateId() {
+//     return '_' + Math.random().toString(36).substr(2, 9);
+// }
+
+
+
+// function test2({a, b, c, g, f, t, y ,s, q, r}) {
+
+// }
+
+// test({f, t, y ,s, q, r});
+
+
+
+// function showUserChildPhoneInfo(user) {
+//     const {
+//         wife: {
+//             child: {
+//                 childName,
+//                 phone: {
+//                     ...childPhoneParams
+//                 }
+//             }
+//         }
+//     } = user;
+//     const fullChildPhoneInfo = {
+//         childName,
+//         ...childPhoneParams,
+//         createdAt: Date.now()
+//     };
+//     return fullChildPhoneInfo;
+// }
+
+// const user = {
+//     name: 'John',
+//     age: 40,
+//     wife: {
+//         name: 'Jane',
+//         age: 40,
+//         child: {
+//             childName: 'Jake',
+//             age: 5,
+//             phone: {
+//                 name: 'Apple',
+//                 age: 5,
+//                 color: 'black',
+//                 os: 'Apple OS',
+//                 model: 5,
+//                 cpu: 3
+//             }
+//         }
+//     },
+//     dog: {
+//         name: 'Jake',
+//         age: 5
+//     }
+// };
+
+// console.log(showUserChildPhoneInfo(user));
+
+
+
+
+
+
+
+
+
+
+
+
+

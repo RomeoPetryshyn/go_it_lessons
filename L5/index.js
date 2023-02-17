@@ -307,7 +307,7 @@ console.log(account.getTransactionTotal(Transaction.WITHDRAW));
 //       return this.books;
 //     },
 //     addBook(bookName) {
-//       console.log("Этот метод будет добавлять новую книгу в свойство books");
+//       console.log("Цей метод добавить книгу");
 //       this.books.push(bookName);
 //     },
 //   };

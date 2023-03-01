@@ -7,8 +7,8 @@
 // const doStuff = function() {} // function expression
 //
 // ===1===
-// Першо-початково - кожна функція визначається з власним this. У випадку коли ми працюємо
-// в strict mode - this нашої функції буде undefined якщо вона не оголошена всередині якогось конкретного контексту.
+// Першо-початково - кожна функція визначається з this відповідно до контексту. У випадку коли ми працюємо
+// в strict mode - контекст нашої функції буде undefined якщо вона не оголошена всередині якогось конкретного контексту.
 // 'use strict';
 // const foo1 = function() {
 //     console.log(this);
@@ -25,7 +25,7 @@
 // foo3(); // Window
 //
 // ===2===
-// Використовуйте .bind(), якщо ви хочете, щоб цю функцію ПІЗНІШЕ викликали з 
+// Використовуйте .bind(), якщо ви хочете, щоб функцію ПІЗНІШЕ викликали з 
 // певним контекстом (через bind ми створюємо копію функції). 
 // Використовуйте .call() або .apply(), якщо ви хочете негайно викликати функцію та змінити контекст.
 // Call/apply викликає функцію негайно, тоді як bind повертає функцію, яка 
@@ -37,6 +37,46 @@
 // call(thisArg, arg1, /* …, */ argN)
 // apply(thisArg, argsArray)
 // bind(thisArg, arg1, arg2, /* …, */ argN)
+//
+//
+//
+// ============================EXAMPLES============================
+//
+// BIND
+// const module = {
+//   x: 42,
+//   getX: function() {
+//     return this.x;
+//   }
+// };
+// console.log(module.getX());
+// const boundGetX = module.getX.bind({x: 50});
+// console.log(boundGetX());
+// console.log(module.getX());
+//
+//
+//
+// APPLY
+// const module = {
+//   x: 42,
+//   getX: function() {
+//     return this.x;
+//   }
+// };
+// console.log(module.getX.apply({x: 100}));
+// console.log(module.getX());
+//
+//
+//
+// CALL
+// const module = {
+//   x: 42,
+//   getX: function() {
+//     return this.x;
+//   }
+// };
+// console.log(module.getX.call({x: 100}));
+// console.log(module.getX());
 //
 //
 //

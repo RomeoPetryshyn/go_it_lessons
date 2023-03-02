@@ -50,24 +50,54 @@ console.log('Executing index.js script...');
 //
 //
 //
+// ========!!!ДУЖЕ ВАЖЛИВИЙ ПРИКЛАД!!!========
 // 3. Будемо писати клас `User` який створює об'єкт із властивостями `login` та `email`.
 // Оголосимо приватні властивості `#login` та `#email`, доступ до яких буде через
-// гетер та сетер `login` та `email`.
-// const mango = new User({
-//     login: 'Mango',
-//     email: 'mango@dog.woof',
-// });
-// console.log(mango.login); // Mango
-// mango.login = 'Mangodoge';
-// console.log(mango.login); // Mangodoge
-// const poly = new User({
-//     login: 'Poly',
-//     email: 'poly@mail.com',
-// });
-// console.log(poly.login); // Poly
-// poly.login = 'Polycutie';
-// console.log(poly.login); // Polycutie
+// гетер та сетер `login` та `email`. Ускладнимо все для себе і додамо поле password.
+// class User {
+//     static userCount = 0;
+//     static addToUserCount() {
+//         this.userCount += 1;
+//     }
 //
+//     #login;
+//     #email;
+//     #password;
+//     constructor(login, email, password) {
+//         this.#login = login;
+//         this.#email = email;
+//         this.#password = password;
+//         User.addToUserCount();
+//     }
+//     get getCreds() {
+//         const enteredPassword = prompt('Enter password');
+//         if (enteredPassword === this.#password) {
+//             return `Your email is: ${this.#email}. Your login is ${this.#login}`;
+//         }
+//     }
+//     set setLogin(newLogin) {
+//         const enteredPassword = prompt('Enter password');
+//         if (enteredPassword === this.#password) {
+//             this.#login = newLogin;
+//         } else {
+//             console.log('Dude, seems like you are not Jake!!!')
+//         }
+//     }
+//     set setEmail(newEmail) {
+//         const enteredPassword = prompt('Enter password');
+//         if (enteredPassword === this.#password) {
+//             this.#email = newEmail;
+//         } else {
+//             console.log('Dude, seems like you are not Jake!!!')
+//         }
+//     }
+// }
+// const jakeUser = new User('jake123', 'jake@gmail.com', '1234');
+// console.log(jakeUser.getCreds);
+// jakeUser.setEmail = 'jake@yahoo.com';
+// jakeUser.setLogin = 'jakeee321';
+// console.log(jakeUser.getCreds);
+// ===========================================
 //
 //
 // 4. Будемо писати клас `Notes` який керує колекцією нотаток у властивості `items`.
@@ -98,15 +128,26 @@ console.log('Executing index.js script...');
 // 5. Будемо писати клас `Toggle` який приймає об'єкт налаштувань `{isOpen: boolean}` і
 // оголошує одну властивість `on` - стан вкл/викл (true/false). За замовчуванням
 // значення властивості `on` повинно бути `false`.
-// const firstToggle = new Toggle({ isOpen: true });
-// console.group('firstToggle');
-// console.log(firstToggle.on);
-// firstToggle.toggle();
-// console.log(firstToggle.on);
-// console.groupEnd('firstToggle');
-// const secondToggle = new Toggle();
-// console.group('secondToggle');
-// console.log(secondToggle.on);
-// secondToggle.toggle();
-// console.log(secondToggle.on);
-// console.groupEnd('secondToggle');
+//
+//
+//
+// 6. Переглянемо клас написаний з використанням наслідування. Батьківський клас - Car, та дочірній - Model.
+// class Car {
+//     constructor(brand) {
+//       this.carname = brand;
+//     }
+//     present() {
+//       return 'I have a ' + this.carname;
+//     }
+// }
+// class Model extends Car {
+//     constructor(brand, mod) {
+//       super(brand);
+//       this.model = mod;
+//     }
+//     show() {
+//       return this.present() + ', it is a ' + this.model;
+//     }
+// }
+// const mycar = new Model("Ford", "Mustang");
+// console.log(mycar.show());

@@ -1,6 +1,10 @@
 console.log('Executing index.js script...');
 //
+// Інкапсуляція, Поліморфізм, Наслідування.
+// Приховування (приватні методи до прикладу), ..., extends
 //
+// Клас - це шаблон об'єкта (інстанса).
+// Обєкт створений за допомогою класу - це його інстанс.
 // 
 // 1. Будемо писати клас `Blogger` для створення об'єкта блогера з наступними властивостями:
 // - `email` - пошта, рядок
@@ -12,22 +16,37 @@ console.log('Executing index.js script...');
 // `User ${пошта} is ${вік} years old and has ${кількість постів} posts`.
 // Додамо метод `updatePostCount(value)`, який у параметрі `value` приймає
 // кількість постів, які потрібно додати користувачеві.
-// const mango = new User({
-//     name: 'mango@mail.com',
+// class Blogger {
+//     constructor({ email, age, numberOfPosts, topics }) {
+//         this.email = email;
+//         this.age = age;
+//         this.numberOfPosts = numberOfPosts;
+//         this.topics = topics;
+//     }
+//     getInfo() {
+//         return `User ${this.email} is ${this.age} years old and has ${this.numberOfPosts} posts`;
+//     }
+//     updatePostCount(value) {
+//         this.numberOfPosts += value;
+//     }
+// };
+// const mango = new Blogger({
+//     email: 'mango@mail.com',
 //     age: 24,
 //     numberOfPosts: 20,
 //     topics: ['tech', 'cooking'],
 // });
-// console.log(mango.getInfo()); // User mango@mail.com is 24 years old and has 20 posts
 // mango.updatePostCount(5);
-// console.log(mango.getInfo()); // User mango@mail.com is 24 years old and has 25 posts
-// const poly = new User({
-//     name: 'poly@mail.com',
+// console.log(mango.getInfo());
+// // console.log(mango.getInfo()); // User mango@mail.com is 24 years old and has 20 posts
+// // mango.updatePostCount(5);
+// // console.log(mango.getInfo()); // User mango@mail.com is 24 years old and has 25 posts
+// const poly = new Blogger({
+//     email: 'poly@mail.com',
 //     age: 19,
 //     numberOfPosts: 17,
 //     topics: ['sports', 'gaming', 'health'],
 // });
-// console.log(poly.getInfo()); // User poly@mail.com is 19 years old and has 17 posts
 // poly.updatePostCount(4);
 // console.log(poly.getInfo()); // User poly@mail.com is 19 years old and has 21 posts
 //
@@ -40,13 +59,27 @@ console.log('Executing index.js script...');
 // - `getItems()` - повертає масив товарів.
 // - `addItem(item)` - отримує новий товар і додає його до поточних.
 // - `removeItem(item)` - отримує товар і, якщо він є, видаляє його з поточних.
-// const storage = new Storage(['apple', 'lemon', 'cherry', 'watermelon', 'banana']);
+// class Storage {
+//     constructor(items) {
+//         this.items = items;
+//     }
+//     getItems() {
+//         return this.items;
+//     }
+//     addItem(item) {
+//         this.items.push(item);
+//     }
+//     removeItem(item) {
+//         this.items = this.items.filter((existingItem) => {
+//             return existingItem !== item;
+//         });
+//     }
+// }
+// const storage = new Storage(['apple', 'lemon', 'cherry', 'watermelon']);
 // const items = storage.getItems();
-// console.table(items); 
 // storage.addItem('banana');
-// console.table(storage.items); 
 // storage.removeItem('lemon');
-// console.table(storage.items);
+// console.log(storage.items);
 //
 //
 //
@@ -54,50 +87,68 @@ console.log('Executing index.js script...');
 // 3. Будемо писати клас `User` який створює об'єкт із властивостями `login` та `email`.
 // Оголосимо приватні властивості `#login` та `#email`, доступ до яких буде через
 // гетер та сетер `login` та `email`. Ускладнимо все для себе і додамо поле password.
+
 // class User {
+//     static userType = {
+//         ADMIN: 'ADMIN',
+//         DEMO: 'DEMO'
+//     }
 //     static userCount = 0;
 //     static addToUserCount() {
 //         this.userCount += 1;
 //     }
-//
+
 //     #login;
 //     #email;
 //     #password;
+
 //     constructor(login, email, password) {
 //         this.#login = login;
 //         this.#email = email;
 //         this.#password = password;
 //         User.addToUserCount();
 //     }
+
 //     get getCreds() {
 //         const enteredPassword = prompt('Enter password');
-//         if (enteredPassword === this.#password) {
+//         if (this.#password === enteredPassword) {
 //             return `Your email is: ${this.#email}. Your login is ${this.#login}`;
 //         }
+//         return 'You are not Jake!!!';
 //     }
+
 //     set setLogin(newLogin) {
 //         const enteredPassword = prompt('Enter password');
-//         if (enteredPassword === this.#password) {
+//         if (this.#password === enteredPassword) {
 //             this.#login = newLogin;
 //         } else {
-//             console.log('Dude, seems like you are not Jake!!!')
+//             console.log('You are not Jake. You cannot reset login');
 //         }
 //     }
+
 //     set setEmail(newEmail) {
 //         const enteredPassword = prompt('Enter password');
-//         if (enteredPassword === this.#password) {
+//         if (this.#password === enteredPassword) {
 //             this.#email = newEmail;
 //         } else {
-//             console.log('Dude, seems like you are not Jake!!!')
+//             console.log('You are not Jake. You cannot reset login');
 //         }
 //     }
 // }
-// const jakeUser = new User('jake123', 'jake@gmail.com', '1234');
-// console.log(jakeUser.getCreds);
-// jakeUser.setEmail = 'jake@yahoo.com';
+
+// const jakeUser = new User('jake123', 'jake@gmail.com', '1');
+// const mikeUser = new User('mike123', 'mike@gmail.com', '1');
+// const johnUser = new User('john123', 'john@gmail.com', '1');
+// const jackUser = new User('jack123', 'jack@gmail.com', '1');
+
+// console.log({
+//     jakeUser, mikeUser, johnUser, jackUser, User
+// });
 // jakeUser.setLogin = 'jakeee321';
+// jakeUser.setEmail = 'jakeee321@yahoo.com';
 // console.log(jakeUser.getCreds);
-// ===========================================
+
+// console.log(jakeUser.#email);
 //
 //
 // 4. Будемо писати клас `Notes` який керує колекцією нотаток у властивості `items`.
@@ -110,17 +161,45 @@ console.log('Executing index.js script...');
 // }
 // Додамо методи `addNote(note)`, `removeNote(text)` та
 // `updatePriority(text, newPriority)`.
+// class Notes {
+//     static priorities = {
+//         LOW: 'low',
+//         NORMAL: 'normal',
+//         HIGH: 'high'
+//     }
+
+//     constructor(items) {
+//         this.items = items;
+//     }
+
+//     addNote(note) {
+//         this.items.push(note);
+//     }
+
+//     removeNote(text) {
+//         this.items = this.items.filter((existingItem) => {
+//             return text !== existingItem.text;
+//         });
+//     }
+
+//     updateNote(text, newPriority) {
+//         const foundNote = this.items.find((existingItem) => existingItem.text === text);
+//         foundNote.priority = newPriority;
+//     }
+// }
+
+
 // const myNotes = new Notes([]);
-// myNotes.addNote({ text: 'Моя перша замітка', priority: Notes.Priority.LOW });
+// myNotes.addNote({ text: 'Моя перша замітка', priority: Notes.priorities.LOW });
 // console.log(myNotes.items);
 // myNotes.addNote({
 //   text: 'Моя друга замітка',
-//   priority: Notes.Priority.NORMAL,
+//   priority: Notes.priorities.NORMAL,
 // });
 // console.log(myNotes.items);
 // myNotes.removeNote('Моя перша замітка');
 // console.log(myNotes.items);
-// myNotes.updateNote('Моя друга замітка', Notes.Priority.HIGH);
+// myNotes.updateNote('Моя друга замітка', Notes.priorities.HIGH);
 // console.log(myNotes.items);
 //
 //
@@ -132,22 +211,44 @@ console.log('Executing index.js script...');
 //
 //
 // 6. Переглянемо клас написаний з використанням наслідування. Батьківський клас - Car, та дочірній - Model.
-// class Car {
-//     constructor(brand) {
-//       this.carname = brand;
+// class AliveBeing {
+//     constructor(isBreathing, isDrinkingWater) {
+//         this.isBreathing = isBreathing;
+//         this.isDrinkingWater = isDrinkingWater;
 //     }
-//     present() {
-//       return 'I have a ' + this.carname;
-//     }
-// }
-// class Model extends Car {
-//     constructor(brand, mod) {
-//       super(brand);
-//       this.model = mod;
-//     }
-//     show() {
-//       return this.present() + ', it is a ' + this.model;
+
+//     getAliveBeingInfo() {
+//         return `Is breathing: ${this.isBreathing}. isDrinkingWater: ${this.isDrinkingWater}`;
 //     }
 // }
-// const mycar = new Model("Ford", "Mustang");
-// console.log(mycar.show());
+
+// const bug = new AliveBeing(false, true);
+
+// class Cat extends AliveBeing {
+//     constructor(saysMeyow, isBreathing, isDrinkingWater) {
+//         super(isBreathing, isDrinkingWater);
+//         this.saysMeyow = saysMeyow;
+//     }
+
+//     getCatInfo() {
+//         return this;
+//     }
+// }
+
+// class Dog extends AliveBeing {
+//     constructor(saysHav, isBreathing, isDrinkingWater) {
+//         super(isBreathing, isDrinkingWater);
+//         this.saysHav = saysHav;
+//     }
+
+//     getDogInfo() {
+//         return this;
+//     }
+// }
+
+// const myrchuk = new Cat(true, true, true);
+// const brovko = new Dog(true, true, true);
+// console.log(myrchuk.getCatInfo());
+// console.log(myrchuk.getAliveBeingInfo());
+// console.log(brovko.getDogInfo());
+// console.log(brovko.getAliveBeingInfo());

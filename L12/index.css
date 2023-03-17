@@ -10,10 +10,17 @@ body {
     border: 1px solid red;
 }
 
+.yellow-box {
+  background-color: yellow;
+  border: 1px solid red;
+  width: 100px;
+  height: 100px;
+}
+
 /* 2 */
 .js-greeting {
     display: none;
-    font-size: 30px;
+    font-size: 50px;
     color: green;
 }
 

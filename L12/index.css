@@ -1,0 +1,65 @@
+body {
+    padding: 50px;
+}
+
+/* 1, 3 */
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(14, 93, 157);
+    border: 1px solid red;
+}
+
+/* 2 */
+.js-greeting {
+    display: none;
+    font-size: 30px;
+    color: green;
+}
+
+
+/* 3 */
+@import url(https://fonts.googleapis.com/css?family=Lato:300);
+.keys {
+  font-family: 'Lato', sans-serif;    
+  text-align: center;
+  width: 500px;
+  height: 200px;
+  margin: auto;
+}
+
+.arr {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  background: grey;
+  color: white;
+  font-size: 50px;
+  border-right: 10px solid darken(grey, 20);
+  border-bottom: 10px solid darken(grey, 20);
+  border-left: 10px solid darken(grey, 15);
+  border-top: 10px solid darken(grey, 10);  
+  display: inline-block;
+  margin: 5px;
+  transition: all .05s linear;
+  user-select: none;
+}
+
+.arr:active {
+    border-bottom: 8px solid darken(grey, 20);
+    text-shadow: 0 0 10px white, 0 0 10px white, 0 0 20px white;    
+    transform: translate(0, 2px);
+}
+
+.up {
+  position: relative;
+  top: -4px;
+}
+
+.pressed {
+  border-bottom: 8px solid darken(grey, 20);
+  text-shadow: 0 0 10px white;
+  transform: translate(0, 2px);
+}

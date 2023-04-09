@@ -1,0 +1,103 @@
+* {
+    transition: all .1s ease-in;
+    box-sizing: border-box;
+}
+.container {
+    background: #309acd;
+    border: 10px solid #2782ae;
+    text-align: center;
+    font-size: 0;
+    font-family: "Lucida Sans Unicode", sans-serif;
+}
+header {
+    text-align: start;
+    width: 70%;
+    margin: 20px auto;
+    font-size: 32px;
+    color: #ffffff;
+}
+ul {
+    border: 2px solid #ffffff;
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    list-style: none;
+}
+ul li {
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    font-size: 24px;
+    padding: 20px;
+}
+ul:hover li {
+    opacity: 0.6;
+}
+ul li:hover {
+    opacity: 1.0;
+}
+.icons {
+    opacity: 0.7;
+    margin: 10px 0;
+}
+.city1 {
+    width: 50%;
+    background: #309acd;
+}
+.city2 {
+    width: 25%;
+    background: #30cdcd;
+}
+.city3 {
+    width: 25%;
+    background: #9a669a;
+}
+.city4 {
+    width: 25%;
+    background: #c44545;
+}
+.city5 {
+    width: 25%;
+    background: #e36748;
+}
+.city6 {
+    width: 25%;
+    background: #ffcd66;
+}
+.city7 {
+    width: 25%;
+    background: #9acd9a;
+}
+.city8 {
+    width: 25%;
+    background: #669a9a;
+}
+.city9 {
+    width: 50%;
+    background: #cd669a;
+}
+.city10 {
+    width: 25%;
+    background: #309a66;
+}
+.city11 {
+    width: 100%;
+    background: #66669a;
+}
+footer {
+    font-size: 20px;
+    text-align: start;
+    width: 70%;
+    margin: 20px auto 50px auto;
+    color: #ffffff;
+}
+.button {
+    width: 300px;
+    height: 60px;
+    font-size: 20px;
+    color: red;
+    background-color: cornflowerblue;
+    font-family: Arial, sans-serif;
+    margin: 20px 0px 50px 550px;
+}

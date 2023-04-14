@@ -12,7 +12,14 @@
 <body>
 <h1>Заняття 20. Тут ми тестуватимемо наш код. Ми підключили наш JS файл до даної гіпертекстової розмітки</h1>
 
-<div class="container"></div>
+<div class="container">
+
+</div>
+
+<div style="margin-top: 30px;">5 elements per page</div>
+<button id="previous-page-button" style="margin-right: 20px;" onclick="previousPage()">Previous page</button>
+<span style="margin-right: 20px;" id="current-page-element"></span>
+<button id="next-page-button" onclick="nextPage()">Next page</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script defer src="index.js"></script>

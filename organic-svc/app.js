@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors')
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser')
 const logger = require('morgan');
 const productsRouter = require('./routes/products');
 
@@ -18,6 +19,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 app.use('/products', productsRouter);
 

@@ -34,19 +34,19 @@ router.get('/', function(req, res, next) {
   res.status(200).send(products);
 });
 
-router.post('/', function(req, res, next) {
-  // console.log(req);
-  // res.status(200).send({message: 'ENTITY CREATED'});
-  res.status(400).send({message: 'BAD REQUEST'});
+router.post('/', function(req, res, _next) {
+  console.log({ body: req.body, parameters: req.query });
+  res.status(200).send({message: 'ENTITY CREATED'});
 });
 
-router.put('/', function(req, res, next) {
-  console.log(req);
+router.put('/', function(req, res, _next) {
+  console.log({ req });
+  console.log({ body: req.body, parameters: req.query });
   res.status(404).send({message: 'FAILED TO UPDATE'});
 });
 
-router.delete('/', function(req, res, next) {
-  console.log(req);
+router.delete('/', function(req, res, _next) {
+  console.log({ body: req.body, parameters: req.query });
   res.status(200).send({message: 'ENTITY Deleted'});
 });
 

@@ -86,36 +86,36 @@
 // 2. GET
 // Отримаємо дані про користувача по його ID. Також отримаємо дані всіх користувачів одразу
 // Будемо виводити ці дані на сторінку для користувача.
-// fetch('https://jsonplaceholder.typicode.com/users', {
-//     method: "GET",
-//     headers: { "Content-Type": "application/json" },
-// }).then(response => {
-//     console.log({response});
-//     return response.json();
-// }).then(resData => {
-//     console.log(resData);
-//     const [container] = document.getElementsByClassName('container');
-//     const markup = (resData.map(buildItemMarkup)).join('');
-//     container.innerHTML = markup;
-// });
+fetch('https://jsonplaceholder.typicode.com/products', {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+}).then(response => {
+    console.log({response});
+    return response.json();
+}).then(resData => {
+    console.log(resData);
+    const [container] = document.getElementsByClassName('container');
+    const markup = (resData.map(buildItemMarkup)).join('');
+    container.innerHTML = markup;
+});
 
-// function getDataForItem() {
-//     const inputElem = document.getElementById('user-id-input');
-//     const userId = Number(inputElem.value);
-//     fetch(`https://jsonplaceholder.typicode.com/users?id=${userId}`, {
-//         method: "GET",
-//         headers: { "Content-Type": "application/json" }
-//     }).then(response => {
-//         console.log({response});
-//         return response.json();
-//     }).then(resData => {
-//         console.log(resData);
-//         const [dataElem] = resData;
-//         const [container] = document.getElementsByClassName('container');
-//         const markup = buildItemMarkup(dataElem);
-//         container.innerHTML = markup;
-//     });
-// }
+function getDataForItem() {
+    const inputElem = document.getElementById('user-id-input');
+    const userId = Number(inputElem.value);
+    fetch(`https://jsonplaceholder.typicode.com/users?id=${userId}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }
+    }).then(response => {
+        console.log({response});
+        return response.json();
+    }).then(resData => {
+        console.log(resData);
+        const [dataElem] = resData;
+        const [container] = document.getElementsByClassName('container');
+        const markup = buildItemMarkup(dataElem);
+        container.innerHTML = markup;
+    });
+}
 
 function buildItemMarkup ({ name, email, phone, website }) {
     const phoneForMarkup = phone ?? 'No phone number';

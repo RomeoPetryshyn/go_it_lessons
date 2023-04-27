@@ -122,44 +122,44 @@
 // записуємо її в пам'ять. При наступному відкриванні сторінки - тема повинна бути
 // відновлена та використана, якщо запис знайдено у пам'яті. + кнопка очистки памяті
 // const container = document.getElementsByClassName('container')[0];
-// const [container] = document.getElementsByClassName('container');
-// console.log(container);
+const [container] = document.getElementsByClassName('container');
+console.log(container);
 
-// window.addEventListener("storage", (_) => {
-//     const colorScheme = localStorage.getItem('colorScheme');
-//     handleColorScheme(colorScheme);
-// });
+window.addEventListener("storage", (_) => {
+    const colorScheme = localStorage.getItem('colorScheme');
+    handleColorScheme(colorScheme);
+});
 
-// (function onColorSchemeLoad() {
-//     const colorScheme = localStorage.getItem('colorScheme');
-//     handleColorScheme(colorScheme);
-// })();
+(function onColorSchemeLoad() {
+    const colorScheme = localStorage.getItem('colorScheme');
+    handleColorScheme(colorScheme);
+})();
 
-// function setColorTheme(colorScheme = 'light') {
-//     localStorage.setItem('colorScheme', colorScheme);
-//     handleColorScheme(colorScheme);
-//     window.dispatchEvent( new Event('storage') );
-// }
+function setColorTheme(colorScheme = 'light') {
+    localStorage.setItem('colorScheme', colorScheme);
+    handleColorScheme(colorScheme);
+    window.dispatchEvent( new Event('storage') );
+}
 
-// function clearColorThemeSelection() {
-//     localStorage.removeItem('colorScheme');
-//     handleColorScheme();
-//     window.dispatchEvent( new Event('storage') );
-// }
+function clearColorThemeSelection() {
+    localStorage.removeItem('colorScheme');
+    handleColorScheme();
+    window.dispatchEvent( new Event('storage') );
+}
 
-// function handleColorScheme (colorScheme) {
-//     const validColorScheme = colorScheme && ['light', 'dark'].includes(colorScheme) 
-//         ? colorScheme
-//         : 'light';
-//     if (validColorScheme === 'light') {
-//         container.style.backgroundColor = 'white';
-//         container.style.color = 'black';
-//     } 
-//     if (validColorScheme === 'dark') {
-//         container.style.backgroundColor = 'black';
-//         container.style.color = 'white';
-//     }
-// }
+function handleColorScheme (colorScheme) {
+    const validColorScheme = colorScheme && ['light', 'dark'].includes(colorScheme) 
+        ? colorScheme
+        : 'light';
+    if (validColorScheme === 'light') {
+        container.style.backgroundColor = 'white';
+        container.style.color = 'black';
+    } 
+    if (validColorScheme === 'dark') {
+        container.style.backgroundColor = 'black';
+        container.style.color = 'white';
+    }
+}
 //
 //
 //

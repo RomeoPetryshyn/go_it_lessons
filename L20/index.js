@@ -196,11 +196,16 @@ function enableButton(buttonId) {
     button.disabled = false;
 }
 
+function addProduct(name) {
+    console.log('I am clicked', name);
+    localStorage.setItem('products', name);
+}
+
 // #5 Function to build HTML Markup for ONE PRODUCT  *this function is PURE FUNCTION
 function buildProductMarkup({ type, name, price, priceBeforeDiscount, stars, index }) {
     // returning HTML markup as JS String
     return `
-        <div>
+        <div onclick="addProduct('${name}')">
             <span style="padding-right: 10px">index: ${index}</span>
             <span style="padding-right: 10px">name: ${name}</span>
             <span style="padding-right: 10px">type: ${type}</span>

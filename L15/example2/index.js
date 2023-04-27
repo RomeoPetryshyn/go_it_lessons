@@ -1,6 +1,10 @@
 // IMPORT FROM LIBRARY. TYPE - COMMONJS
-const _ = require('lodash');
-console.log(_.add(1, 2));
+// const _ = require('lodash');
+// console.log(_.add(1, 2));
+
+// console.log(_.map([1,2,3,4,5], (item) => {
+//     return item + 1;
+// }));
 
 // IMPORT FROM LIBRARY. TYPE - MODULE
 // import _ from "lodash";

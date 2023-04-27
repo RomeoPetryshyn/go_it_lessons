@@ -1,0 +1,25 @@
+.container {
+    .dark-mode {
+        .header {
+            color: wheat;
+        }
+        .content {
+            color: white;
+        }
+        .footer {
+            color: white;
+        }
+    }
+
+    .light-mode {
+        .header {
+            color: black;
+        }
+        .content {
+            color: black;
+        }
+        .footer {
+            color: black;
+        }
+    }
+}

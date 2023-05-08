@@ -21,15 +21,9 @@
       2. mkdir src/pages/notFound
       2. Створимо власне js файл для нашого Not Found компоненту з базовою розміткою
       3. Додамо нашу NotFound сторінку в Роути нашого App.js (до прикладу - <Route path='*' element={ <NotFound/> }/>)
-   9. Розглянемо хук useNavigate https://reactrouter.com/en/main/hooks/use-navigate . Спробуємо використати його додавши кнопку в About компоненті яка буде робити переадресацію на Home
-      1. useNavigate хук - повертає функцію для редіректі. Отримаємо цю функцію (до прикладу - const navigate = useNavigate();)
-      2. зреалізуємо кнопку для переходу на Home та при натисканні будемо переходити туди (до прикладу - navigate('/'))
-
-
-
-## INIT NEW PROJECT
-1. npm init
-2. Побудували конфігураційний файл package.json
-    1. add start command
-    2. npm i dependencies
-3. npm start
+   9. Додамо компоненти Product i ProductDetails, де ProductDetails буде працювати по id продукту
+      1. Додаємо роут <Route path="/products/:productId" element={<ProductDetails />} />
+      2. Дістаємо productId через хук useParams, до прикладу - const { productId } = useParams();
+   10. Розглянемо хук useNavigate https://reactrouter.com/en/main/hooks/use-navigate . Спробуємо використати його додавши кнопку в About компоненті яка буде робити переадресацію на Home
+       1. useNavigate хук - повертає функцію для редіректі. Отримаємо цю функцію (до прикладу - const navigate = useNavigate();)
+       2. зреалізуємо кнопку для переходу на Home та при натисканні будемо переходити туди (до прикладу - navigate('/'))

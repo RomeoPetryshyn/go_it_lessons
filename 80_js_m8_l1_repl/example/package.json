@@ -1,0 +1,20 @@
+{
+  "name": "example",
+  "version": "0.0.1",
+  "description": "Example application on JS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "JS_80",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.1.1"
+  }
+}

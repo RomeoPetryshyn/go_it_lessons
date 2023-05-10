@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 function Products () {
@@ -21,6 +21,8 @@ function Products () {
             name: 'Watermelon'
         }
     ];
+    const location = useLocation();
+    console.log({location});
     const productsMarkup = productsData.map(({ id, name }) => {
         return (
             <Link key={`${id}`} to={`/products/product/${id}/${name}`}> {name} </Link>

@@ -22,10 +22,10 @@ function Products () {
         }
     ];
     const location = useLocation();
-    console.log({location});
+    // console.log({location});
     const productsMarkup = productsData.map(({ id, name }) => {
         return (
-            <Link key={`${id}`} to={`/products/product/${id}/${name}`}> {name} </Link>
+            <Link state={{from: location}} key={`${id}`} to={`/products/product/${id}/${name}`}> {name} </Link>
         );
     });
 
